@@ -1,19 +1,29 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from "react-navigation";
+import { createBottomTabNavigator } from "react-navigation-tabs";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  );
-}
+import PortfolioScreen from "./app/screens/Portfolio";
+import WatchListScreen from "./app/screens/WatchList";
+import MarketsScreen from "./app/screens/Markets";
+import CommunityScreen from "./app/screens/Community";
+import ProfileScreen from "./app/screens/Profile";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+const TabNavigator = createBottomTabNavigator(
+  {
+    Portfolio: { screen: PortfolioScreen },
+    WatchList: { screen: WatchListScreen },
+    Markets: { screen: MarketsScreen },
+    Community: { screen: CommunityScreen },
+    Profile: { screen: ProfileScreen }
   },
-});
+  // {
+  //   defaultNavigationOptions: ({ navigation }) => ({
+  //     tabBarIcon: () => {
+  //       return <Icon name="rocket" size={30} color="#900" />;
+  //     },
+  //   })
+  // }
+);
+
+export default createAppContainer(TabNavigator);
