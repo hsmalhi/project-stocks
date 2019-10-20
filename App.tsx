@@ -1,5 +1,6 @@
 import { createAppContainer } from "react-navigation";
 import { createBottomTabNavigator } from "react-navigation-tabs";
+import { createStackNavigator } from "react-navigation-stack";
 import React from "react";
 
 import PortfolioScreen from "./app/screens/Portfolio";
@@ -68,4 +69,18 @@ const TabNavigator = createBottomTabNavigator(
   }
 );
 
-export default createAppContainer(TabNavigator);
+TabNavigator.navigationOptions = ({ navigation }) => {
+  const { routeName } = navigation.state.routes[navigation.state.index];
+
+  const headerTitle = routeName;
+
+  return {
+    headerTitle,
+  };
+};
+
+const AppNavigator = createStackNavigator({
+  Home: TabNavigator
+});
+
+export default createAppContainer(AppNavigator);

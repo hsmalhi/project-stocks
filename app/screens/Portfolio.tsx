@@ -8,3 +8,7 @@ export default function Portfolio() {
     </View>
   );
 }
+
+Portfolio.navigationOptions = {
+  title: "Portfolio"
+};
