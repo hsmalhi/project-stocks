@@ -3,8 +3,10 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createStackNavigator } from "react-navigation-stack";
 import React from "react";
 
+import env from './.env.json';
+
 import PortfolioScreen from "./app/screens/Portfolio";
-import WatchListScreen from "./app/screens/WatchList";
+import WatchlistScreen from "./app/screens/Watchlist";
 import MarketsScreen from "./app/screens/Markets";
 import CommunityScreen from "./app/screens/Community";
 import ProfileScreen from "./app/screens/Profile";
@@ -19,10 +21,10 @@ const TabNavigator = createBottomTabNavigator(
         tabBarLabel: "Portfolio"
       }
     },
-    WatchList: {
-      screen: WatchListScreen,
+    Watchlist: {
+      screen: WatchlistScreen,
       navigationOptions: {
-        tabBarLabel: "Watch List"
+        tabBarLabel: "Watchlist"
       }
     },
     Markets: {
@@ -53,7 +55,7 @@ const TabNavigator = createBottomTabNavigator(
         let iconName: string;
         if (routeName === "Portfolio") {
           iconName = "dollar-sign";
-        } else if (routeName === "WatchList") {
+        } else if (routeName === "Watchlist") {
           iconName = "eye";
         } else if (routeName === "Markets") {
           iconName = "trending-up";
