@@ -36,7 +36,6 @@ export default function TickerSearch() {
         clearIcon
         round
         showLoading={loading}
-        autoCapitalize="characters"
         inputStyle={{ color: "black" }}
         placeholder="Search Stock Tickers (ex. MSFT)"
         onChangeText={text => updateSearch(text)}
@@ -50,6 +49,7 @@ export default function TickerSearch() {
             subtitle={item["2. name"]}
             bottomDivider
             chevron
+            onPress={() => setSearch("")}
           />
         ))}
       </ScrollView>

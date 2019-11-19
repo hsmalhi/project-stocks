@@ -8,3 +8,7 @@ export default function Community() {
     </View>
   );
 }
+
+Community.navigationOptions = {
+  title: "Community"
+};

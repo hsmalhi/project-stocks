@@ -11,76 +11,55 @@ import ProfileScreen from "./app/screens/Profile";
 
 import Icon from "react-native-vector-icons/Feather";
 
-const TabNavigator = createBottomTabNavigator(
-  {
-    Portfolio: {
-      screen: PortfolioScreen,
-      navigationOptions: {
-        tabBarLabel: "Portfolio"
-      }
-    },
-    Watchlist: {
-      screen: WatchlistScreen,
-      navigationOptions: {
-        tabBarLabel: "Watchlist"
-      }
-    },
-    Markets: {
-      screen: MarketsScreen,
-      navigationOptions: {
-        tabBarLabel: "Markets"
-      }
-    },
-    Community: {
-      screen: CommunityScreen,
-      navigationOptions: {
-        tabBarLabel: "Community"
-      }
-    },
-    Profile: {
-      screen: ProfileScreen,
-      navigationOptions: {
-        tabBarLabel: "Profile"
-      }
-    }
-  },
-  {
-    defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused }) => {
-        const { routeName } = navigation.state;
-        const iconSize = 24;
+const PortfolioStack = createStackNavigator( {PortfolioScreen} );
+const WatchlistStack = createStackNavigator( {WatchlistScreen} );
+const MarketsStack = createStackNavigator( {MarketsScreen} );
+const CommunityStack = createStackNavigator( {CommunityScreen} );
+const ProfileStack = createStackNavigator( {ProfileScreen} );
 
-        let iconName: string;
-        if (routeName === "Portfolio") {
-          iconName = "dollar-sign";
-        } else if (routeName === "Watchlist") {
-          iconName = "eye";
-        } else if (routeName === "Markets") {
-          iconName = "trending-up";
-        } else if (routeName === "Community") {
-          iconName = "message-circle";
-        } else if (routeName === "Profile") {
-          iconName = "user";
-        }
+const iconSize = 24;
 
-        return <Icon name={iconName} size={iconSize} color={focused ? '#5491DD' : '#9E9E9E'}/>;
-      }
-    })
+PortfolioStack.navigationOptions = {
+  tabBarLabel: 'Portfolio',
+  tabBarIcon: ({ focused }) => {
+    return <Icon name="dollar-sign" size={iconSize} color={focused ? '#5491DD' : '#9E9E9E'}/>
   }
-);
-
-TabNavigator.navigationOptions = ({ navigation }) => {
-  const { routeName } = navigation.state.routes[navigation.state.index];
-
-  const headerTitle = routeName;
-
-  return {
-    headerTitle,
-  };
 };
 
-const AppNavigator = createStackNavigator({
-  Home: TabNavigator
-});
+WatchlistStack.navigationOptions = {
+  tabBarLabel: 'Watchlist',
+  tabBarIcon: ({ focused }) => {
+    return <Icon name="eye" size={iconSize} color={focused ? '#5491DD' : '#9E9E9E'}/>
+  }
+};
 
-export default createAppContainer(AppNavigator);
+MarketsStack.navigationOptions = {
+  tabBarLabel: 'Markets',
+  tabBarIcon: ({ focused }) => {
+    return <Icon name="trending-up" size={iconSize} color={focused ? '#5491DD' : '#9E9E9E'}/>
+  }
+};
+
+CommunityStack.navigationOptions = {
+  tabBarLabel: 'Community',
+  tabBarIcon: ({ focused }) => {
+    return <Icon name="message-circle" size={iconSize} color={focused ? '#5491DD' : '#9E9E9E'}/>
+  }
+};
+
+ProfileStack.navigationOptions = {
+  tabBarLabel: 'Profile',
+  tabBarIcon: ({ focused }) => {
+    return <Icon name="user" size={iconSize} color={focused ? '#5491DD' : '#9E9E9E'}/>
+  }
+};
+
+export default createAppContainer(
+  createBottomTabNavigator({
+    PortfolioStack,
+    WatchlistStack,
+    MarketsStack,
+    CommunityStack,
+    ProfileStack
+  })
+);

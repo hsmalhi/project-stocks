@@ -8,3 +8,7 @@ export default function Profile() {
     </View>
   );
 }
+
+Profile.navigationOptions = {
+  title: "Profile"
+};

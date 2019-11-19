@@ -7,4 +7,8 @@ export default function Markets() {
       <Text>Markets!</Text>
     </View>
   );
-}
+}  
+
+Markets.navigationOptions = {
+  title: "Markets"
+};
