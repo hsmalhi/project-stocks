@@ -3,8 +3,6 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createStackNavigator } from "react-navigation-stack";
 import React from "react";
 
-import env from './.env.json';
-
 import PortfolioScreen from "./app/screens/Portfolio";
 import WatchlistScreen from "./app/screens/Watchlist";
 import MarketsScreen from "./app/screens/Markets";
