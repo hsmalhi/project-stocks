@@ -35,83 +35,85 @@ const ProfileStack = createStackNavigator({
   Profile: { screen: Profile }
 });
 
-const TabStack = createBottomTabNavigator({
-  Portfolio: {
-    screen: PortfolioStack,
-    navigationOptions: {
-      tabBarLabel: "Portfolio",
-      tabBarIcon: ({ focused }) => {
-        return (
-          <Icon
-            name="dollar-sign"
-            size={tabIconSize}
-            color={focused ? "#5491DD" : "#9E9E9E"}
-          />
-        );
+const TabStack = createBottomTabNavigator(
+  {
+    Portfolio: {
+      screen: PortfolioStack,
+      navigationOptions: {
+        tabBarLabel: "Portfolio",
+        tabBarIcon: ({ focused }) => {
+          return (
+            <Icon
+              name="dollar-sign"
+              size={tabIconSize}
+              color={focused ? "#5491DD" : "#9E9E9E"}
+            />
+          );
+        }
       }
-    }
-  },
-  Watchlist: {
-    screen: WatchlistStack,
-    navigationOptions: {
-      tabBarLabel: "Watchlist",
-      tabBarIcon: ({ focused }) => {
-        return (
-          <Icon
-            name="eye"
-            size={tabIconSize}
-            color={focused ? "#5491DD" : "#9E9E9E"}
-          />
-        );
+    },
+    Watchlist: {
+      screen: WatchlistStack,
+      navigationOptions: {
+        tabBarLabel: "Watchlist",
+        tabBarIcon: ({ focused }) => {
+          return (
+            <Icon
+              name="eye"
+              size={tabIconSize}
+              color={focused ? "#5491DD" : "#9E9E9E"}
+            />
+          );
+        }
       }
-    }
-  },
-  Markets: {
-    screen: MarketsStack,
-    navigationOptions: {
-      tabBarLabel: "Watchlist",
-      tabBarIcon: ({ focused }) => {
-        return (
-          <Icon
-            name="trending-up"
-            size={tabIconSize}
-            color={focused ? "#5491DD" : "#9E9E9E"}
-          />
-        );
+    },
+    Markets: {
+      screen: MarketsStack,
+      navigationOptions: {
+        tabBarLabel: "Markets",
+        tabBarIcon: ({ focused }) => {
+          return (
+            <Icon
+              name="trending-up"
+              size={tabIconSize}
+              color={focused ? "#5491DD" : "#9E9E9E"}
+            />
+          );
+        }
       }
-    }
-  },
-  Community: {
-    screen: CommunityStack,
-    navigationOptions: {
-      tabBarLabel: "Watchlist",
-      tabBarIcon: ({ focused }) => {
-        return (
-          <Icon
-            name="message-circle"
-            size={tabIconSize}
-            color={focused ? "#5491DD" : "#9E9E9E"}
-          />
-        );
+    },
+    Community: {
+      screen: CommunityStack,
+      navigationOptions: {
+        tabBarLabel: "Community",
+        tabBarIcon: ({ focused }) => {
+          return (
+            <Icon
+              name="message-circle"
+              size={tabIconSize}
+              color={focused ? "#5491DD" : "#9E9E9E"}
+            />
+          );
+        }
       }
-    }
-  },
-  Profile: {
-    screen: ProfileStack,
-    navigationOptions: {
-      tabBarLabel: "Watchlist",
-      tabBarIcon: ({ focused }) => {
-        return (
-          <Icon
-            name="user"
-            size={tabIconSize}
-            color={focused ? "#5491DD" : "#9E9E9E"}
-          />
-        );
+    },
+    Profile: {
+      screen: ProfileStack,
+      navigationOptions: {
+        tabBarLabel: "Profile",
+        tabBarIcon: ({ focused }) => {
+          return (
+            <Icon
+              name="user"
+              size={tabIconSize}
+              color={focused ? "#5491DD" : "#9E9E9E"}
+            />
+          );
+        }
       }
     }
   }
-});
+);
 
 const MainStack = createSwitchNavigator(
   {

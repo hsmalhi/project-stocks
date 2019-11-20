@@ -3,12 +3,16 @@ import { View } from "react-native";
 import { SearchBar, ListItem } from "react-native-elements";
 import { ScrollView } from "react-native-gesture-handler";
 
-import AV from '../utils/alpha_vantage_api';
+import AV from "../utils/alpha_vantage_api";
 
-export default function TickerSearch(props: any) {
-  const [ search, setSearch ] = useState("");
-  const [ searchResults, setSearchResults ] = useState([]);
-  const [ loading, setLoading ] = useState(false);
+interface TickerSearchProps {
+  navigation: any;
+}
+
+export default function TickerSearch(props: TickerSearchProps) {
+  const [search, setSearch] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     updateResults();
@@ -27,7 +31,7 @@ export default function TickerSearch(props: any) {
     } else {
       setSearchResults([]);
     }
-  }
+  };
 
   return (
     <View style={{ flex: 1 }}>
@@ -41,17 +45,22 @@ export default function TickerSearch(props: any) {
         onChangeText={text => updateSearch(text)}
         value={search}
       />
-      <ScrollView>
-        {searchResults && searchResults.map((item, i) => (
-          <ListItem
-            key={i}
-            title={item["1. symbol"]}
-            subtitle={item["2. name"]}
-            bottomDivider
-            chevron
-            onPress={() => props.navigation.navigate('StockDetails')}
-          />
-        ))}
+      <ScrollView keyboardShouldPersistTaps="always">
+        {searchResults &&
+          searchResults.map((item, i) => (
+            <ListItem
+              key={i}
+              title={item["1. symbol"]}
+              subtitle={item["2. name"]}
+              bottomDivider
+              chevron
+              onPress={() =>
+                props.navigation.navigate("StockDetails", {
+                  details: item
+                })
+              }
+            />
+          ))}
       </ScrollView>
     </View>
   );
