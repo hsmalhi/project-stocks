@@ -5,7 +5,7 @@ import { ScrollView } from "react-native-gesture-handler";
 
 import AV from '../utils/alpha_vantage_api';
 
-export default function TickerSearch() {
+export default function TickerSearch(props: any) {
   const [ search, setSearch ] = useState("");
   const [ searchResults, setSearchResults ] = useState([]);
   const [ loading, setLoading ] = useState(false);
@@ -49,7 +49,7 @@ export default function TickerSearch() {
             subtitle={item["2. name"]}
             bottomDivider
             chevron
-            onPress={() => setSearch("")}
+            onPress={() => props.navigation.navigate('StockDetails')}
           />
         ))}
       </ScrollView>
