@@ -1,6 +1,6 @@
 const Styles = {
   HeaderStyles: {
-    fontWeight: 'bold',
+    fontWeight: 'bold' as 'bold',
     fontSize: 32
   },
   SubheaderStyles: {

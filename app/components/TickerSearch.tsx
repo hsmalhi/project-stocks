@@ -23,13 +23,19 @@ export default function TickerSearch(props: TickerSearchProps) {
   };
 
   const updateResults = async function() {
-    if (search !== "") {
-      setLoading(true);
-      const results = await AV.searchTickers(search);
-      setSearchResults(results);
-      setLoading(false);
-    } else {
-      setSearchResults([]);
+    try {
+      if (search !== "") {
+        setLoading(true);
+        const results = await AV.searchTickers(search);
+        if (results) {
+          setSearchResults(results);
+          setLoading(false);
+        }
+      } else {
+        setSearchResults([]);
+      }
+    } catch (error) {
+      console.log("Error retrieving quote data!")
     }
   };
 
