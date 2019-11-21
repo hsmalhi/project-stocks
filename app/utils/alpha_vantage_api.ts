@@ -21,6 +21,24 @@ async function searchTickers(search: string) {
   }
 }
 
+async function getIntradaySeries(ticker: string, minutes: number) {
+  try {
+    let response = await fetch(
+      `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${ticker}&interval=${minutes}min&apikey=${API_KEY}`,
+    );
+    let responseJson = await response.json();
+    // stopped HERE.!
+    if (responseJson.bestMatches) {
+      return responseJson.bestMatches;
+    }
+    else if(responseJson.Note === API_LIMIT_MSG) {
+      console.log("API limit reached!");
+    };
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export default {
   searchTickers
 }

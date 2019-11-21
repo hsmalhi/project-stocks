@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Text, View } from "react-native";
+import Styles from "../Styles";
 
 interface StockDetailsProps {
   navigation: any;
@@ -8,10 +9,12 @@ interface StockDetailsProps {
 export default function StockDetails(props: StockDetailsProps) {
   const details = props.navigation.getParam("details", []);
   const ticker = details["1. symbol"];
+  const name = details["2. name"];
 
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>{ticker}</Text>
+    <View style={{ flex: 1 }}>
+      <Text style={ Styles.HeaderStyles }>{ticker}</Text>
+      <Text style={ Styles.SubheaderStyles }>{name}</Text>
     </View>
   );
 }
